@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movimento Esportivo</title>
+
+<style>
+/* geral */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    line-height: 1.5;
+}
+h1, h2, h3 { margin-top: 0; }
+header {
+    background-color: #1e3a5f;
+    color: white;
+    padding: 15px 20px;
+}
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+nav {
+    background-color: #2c5282;
+    padding: 10px 20px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+section {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.banner {
+    background-color: #dbe9f7;
+    text-align: center;
+    padding: 40px 20px;
+}
+.banner h2 {
+    font-size: 30px;
+}
+button {
+    background-color: #2c5282;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #1e3a5f;
+}
+/* esportes */
+.lista-esportes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.esporte {
+    flex: 1 1 250px;
+    border: 1px solid #999;
+    padding: 12px;
+    background-color: #fafafa;
+}
+.esporte h3 {
+    margin-bottom: 5px;
+}
+.detalhe {
+    display: none;
+    margin-top: 8px;
+    color: #555;
+}
+.dica {
+    margin-bottom: 8px;
+}
+.dica button {
+    width: 100%;
+    text-align: left;
+    background-color: #e2e8f0;
+    color: #333;
+}
+.dica button:hover {
+    background-color: #cbd5e0;
+}
+.dica p {
+    display: none;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+}
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #999;
+    font-family: Arial, sans-serif;
+}
+#mensagemForm {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.erro { color: red; }
+.sucesso { color: green; }
+footer {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+#topo {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+/* celular */
+@media (max-width: 600px) {
+    .banner h2 {
+        font-size: 24px;
+    }
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="inicio">
+    <h1>Movimento Esportivo</h1>
+</header>
+
+<!-- menu -->
+<nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#modalidades">Modalidades</a>
+    <a href="#beneficios">Benefícios</a>
+    <a href="#dicas">Dicas</a>
+    <a href="#contato">Contato</a>
+</nav>
+
+<main>
+
+    <section class="banner">
+        <h2>Seu movimento, sua conquista.</h2>
+        <p id="saudacao"></p>
+        <p>
+            Conheça modalidades esportivas e descubra o que o esporte
+            pode trazer para o seu dia a dia.
+        </p>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre o projeto</h2>
+        <p>
+            O Movimento Esportivo é um projeto escolar que apresenta
+            diferentes modalidades e incentiva a prática de esporte.
+        </p>
+        <p>
+            Cada pessoa pode achar um esporte de que goste. O importante
+            é participar, aprender, respeitar os próprios limites e se
+            divertir. O esporte também ensina estratégia, agilidade e
+            trabalho em equipe.
+        </p>
+        <ul>
+            <li><strong>Missão:</strong> incentivar o esporte e o trabalho em equipe.</li>
+            <li><strong>Valores:</strong> respeito, inclusão, dedicação e união.</li>
+            <li><strong>Objetivo:</strong> inspirar hábitos ativos e saudáveis.</li>
+        </ul>
+    </section>
+
+    <section id="modalidades">
+        <h2>Modalidades</h2>
+        <p>Clique em "Ver mais" para ler sobre cada esporte.</p>
+
+        <!-- esportes -->
+        <div class="lista-esportes">
+
+            <div class="esporte">
+                <h3>Basquete</h3>
+                <p>Esporte coletivo com passes, arremessos e estratégia.</p>
+                <button onclick="mostrarDetalhe('basquete')">Ver mais</button>
+                <p class="detalhe" id="basquete">
+                    Cada time tem 5 jogadores em quadra. O objetivo é
+                    acertar a bola na cesta do adversário.
+                </p>
+            </div>
+            <div class="esporte">
+                <h3>Vôlei</h3>
+                <p>Jogo em equipe com saques, manchetes e ataques.</p>
+                <button onclick="mostrarDetalhe('volei')">Ver mais</button>
+                <p class="detalhe" id="volei">
+                    Uma rede divide a quadra. O time precisa fazer a bola
+                    tocar o chão do lado adversário.
+                </p>
+            </div>
+            <div class="esporte">
+                <h3>Futebol</h3>
+                <p>Combina habilidade, movimentação e trabalho em equipe.</p>
+                <button onclick="mostrarDetalhe('futebol')">Ver mais</button>
+                <p class="detalhe" id="futebol">
+                    Dois times de 11 jogadores tentam colocar a bola
+                    no gol do adversário usando principalmente os pés.
+                </p>
+            </div>
+            <div class="esporte">
+                <h3>Corrida</h3>
+                <p>Pode ser feita sozinho ou em grupo, em vários lugares.</p>
+                <button onclick="mostrarDetalhe('corrida')">Ver mais</button>
+                <p class="detalhe" id="corrida">
+                    Dá para correr na rua, em pista ou em parque. É uma
+                    boa forma de começar a se exercitar.
+                </p>
+            </div>
+            <div class="esporte">
+                <h3>Handebol</h3>
+                <p>Os jogadores usam as mãos para passar e arremessar ao gol.</p>
+                <button onclick="mostrarDetalhe('handebol')">Ver mais</button>
+                <p class="detalhe" id="handebol">
+                    É jogado em quadra, com 7 jogadores de cada time,
+                    incluindo o goleiro.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="beneficios">
+        <h2>Benefícios do esporte</h2>
+        <ul>
+            <li><strong>Saúde:</strong> ajuda no condicionamento físico e na coordenação motora.</li>
+            <li><strong>Convivência:</strong> estimula amizade, respeito e cooperação.</li>
+            <li><strong>Disciplina:</strong> ensina organização, responsabilidade e persistência.</li>
+            <li><strong>Confiança:</strong> ajuda a reconhecer conquistas e aprender com os desafios.</li>
+        </ul>
+    </section>
+
+    <section id="dicas">
+        <h2>Dicas para começar</h2>
+        <p>Antes de começar, procure orientação de um profissional e respeite seu ritmo.</p>
+
+        <div class="dica">
+            <button onclick="abrirDica('dica1')">Faça um aquecimento</button>
+            <p id="dica1">Prepare o corpo com movimentos leves antes da atividade principal.</p>
+        </div>
+        <div class="dica">
+            <button onclick="abrirDica('dica2')">Use roupas e equipamentos adequados</button>
+            <p id="dica2">Escolha o material certo para a modalidade e para o local da prática.</p>
+        </div>
+        <div class="dica">
+            <button onclick="abrirDica('dica3')">Respeite seus limites</button>
+            <p id="dica3">Aumente a intensidade aos poucos e peça orientação a um profissional.</p>
+        </div>
+        <div class="dica">
+            <button onclick="abrirDica('dica4')">Hidrate-se e descanse</button>
+            <p id="dica4">Beba água ao longo do dia e reserve tempo para descansar.</p>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Envie dúvidas ou sugestões. (Este formulário é só uma demonstração.)</p>
+
+        <!-- form -->
+        <label for="nome">Nome</label>
+        <input type="text" id="nome">
+
+        <label for="email">E-mail</label>
+        <input type="text" id="email">
+
+        <label for="assunto">Assunto</label>
+        <select id="assunto">
+            <option value="">Selecione</option>
+            <option value="Dúvida">Dúvida</option>
+            <option value="Sugestão">Sugestão</option>
+            <option value="Outro">Outro</option>
+        </select>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" rows="4"></textarea>
+
+        <br><br>
+        <button onclick="enviarFormulario()">Enviar</button>
+
+        <p id="mensagemForm"></p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© <span id="ano"></span> Movimento Esportivo - Projeto educativo</p>
+</footer>
+
+<button id="topo" onclick="voltarAoTopo()">Topo</button>
+
+<script>
+// saudacao
+function mostrarSaudacao() {
+    var hora = new Date().getHours();
+    var texto = "";
+    if (hora < 12) {
+        texto = "Bom dia!";
+    } else if (hora < 18) {
+        texto = "Boa tarde!";
+    } else {
+        texto = "Boa noite!";
+    }
+    document.getElementById("saudacao").innerText = texto;
+}
+function mostrarDetalhe(id) {
+    var detalhe = document.getElementById(id);
+    if (detalhe.style.display === "block") {
+        detalhe.style.display = "none";
+    } else {
+        detalhe.style.display = "block";
+    }
+}
+function abrirDica(id) {
+    var dica = document.getElementById(id);
+    if (dica.style.display === "block") {
+        dica.style.display = "none";
+    } else {
+        dica.style.display = "block";
+    }
+}
+// valida o form
+function enviarFormulario() {
+    var nome = document.getElementById("nome").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var assunto = document.getElementById("assunto").value;
+    var mensagem = document.getElementById("mensagem").value.trim();
+    var aviso = document.getElementById("mensagemForm");
+    if (nome === "" || email === "" || assunto === "" || mensagem === "") {
+        aviso.className = "erro";
+        aviso.innerText = "Preencha todos os campos.";
+        return;
+    }
+    if (email.indexOf("@") === -1) {
+        aviso.className = "erro";
+        aviso.innerText = "Digite um e-mail válido.";
+        return;
+    }
+    aviso.className = "sucesso";
+    aviso.innerText = "Obrigado, " + nome + "! Mensagem registrada (demonstração).";
+    document.getElementById("nome").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("assunto").value = "";
+    document.getElementById("mensagem").value = "";
+}
+function voltarAoTopo() {
+    window.scrollTo(0, 0);
+}
+document.getElementById("ano").innerText = new Date().getFullYear();
+mostrarSaudacao();
+</script>
+
+</body>
+</html>
